@@ -5,7 +5,7 @@
 <h2> Complete Your Profile </h2>
 <a class="nav-link " href="{{ route('unitHead-add_unitHead')}}">
     <i class="bi bi-sticky"></i>
-    <span>Add UnitHead Profile</span>      
+    <span>Add UnitHead profile</span>      
   </a>
 
   <a class="nav-link " href="{{ route('unitHead-addRi')}}">
