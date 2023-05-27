@@ -29,14 +29,14 @@
             <div class="inputBox">
                 <input type="text" name="pen" required onkeyup="this.setAttribute('value', this.value);"
                     value="">
-                <label>Enter Your PEN</label>
+                <label>Enter  PEN</label>
             </div>
 
             <div class="inputBox">
                 <input type="password" name="password" required value=""
                     onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-                <label>ENTER YOUR PASSWORDd</label>
+                <label>ENTER  PASSWORD</label>
             </div>
             <input type="submit" name="sign-in" value="Log In">
         </form>
