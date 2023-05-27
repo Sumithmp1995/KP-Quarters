@@ -182,12 +182,12 @@
             <div class="row p-1 border">
                 <div class="col-md-6 ml-auto">
                     <a href="{{ asset('storage/' . $occupant->marriage_certificate) }}"
-                        class="btn btn-block  "><u>Marriage
+                        class="btn btn-block " target="_blank"><u>Marriage
                             Certificate</u></a>
                 </div>
                 <div class="col-md-6 ml-auto">
                     <a href="{{ asset('storage/' . $occupant->working_status_doc) ?? abort(404) }}"
-                        class="btn btn-block border "><u>Supporting Documents</u></a>
+                        class="btn btn-block border" target="_blank"><u>Supporting Documents</u></a>
                 </div>
             </div>
         </div>

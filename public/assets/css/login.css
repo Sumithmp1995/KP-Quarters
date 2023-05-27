@@ -3,7 +3,7 @@
   padding: 0;
   background: url("/assets/img/login-image.jpg");
   background-size: cover;
-  font-family: sans-serif;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .box {
@@ -15,7 +15,7 @@
   height: 40rem;
   padding: 2.5rem;
   box-sizing: border-box;
-  background: rgb(116 130 139 / 88%);
+  background: rgb(116 130 139 / 90%);
   border-radius: 0.625rem;
 }
 
@@ -35,7 +35,7 @@
 .box h2 {
   margin: 0 0 1.875rem;
   padding: 0;
-  color: #fff;
+  color: #ffff;
   text-align: center;
 }
 
@@ -51,7 +51,7 @@
   letter-spacing: 0.062rem;
   margin-bottom: 1.575rem;
   border: none;
-  border-bottom: 0.065rem solid #fff;
+  border-bottom: 0.065rem solid #080808;
   outline: none;
   background: transparent;
 }
@@ -60,11 +60,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0.625rem 0;
+  padding: 0.625rem 1rem;
   font-size: 1rem;
   color: #fff;
   pointer-events: none;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .box .inputBox input:focus ~ label,
@@ -72,7 +72,7 @@
 .box .inputBox input:not([value=""]) ~ label {
   top: -1.125rem;
   left: 0;
-  color: #03a9f4;
+  color: #ffffff;
   font-size: 0.75rem;
 }
 
@@ -80,7 +80,7 @@
   border: none;
   outline: none;
   color: #fff;
-  background-color: #03a9f4;
+  background-color: #2905ac;
   padding: 0.625rem 1.25rem;
   cursor: pointer;
   border-radius: 0.312rem;
@@ -89,5 +89,5 @@
 }
 
 .box input[type="submit"]:hover {
-  background-color: #1cb1f5;
+  background-color: #37a106;
 }

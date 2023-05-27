@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('unit_address');
             $table->string('tel_no');
             $table->string('unitHead_name');
+            $table->string('desig');
             $table->string('unitHead_mob');
             $table->string('unit_email');
           

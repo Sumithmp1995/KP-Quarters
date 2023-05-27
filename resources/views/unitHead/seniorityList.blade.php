@@ -1,165 +1,96 @@
 @extends('layouts.unitHead-dashboard')
+@section('headers')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+@endsection
 
 @section('content')
-    <section class="intro">
-        <div class="bg-image h-100" style="background-color: #638cca;">
-            <div class="mask d-flex align-items-center h-100">
-                <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body p-0">
-                                    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                                        style="position: relative; height: 300px">
-                                        <table class="table table-striped mb-0">
-                                            <thead style="background-color: #afcef7;">
-                                                <tr>
-                                                    <th scope="col">Seniority No. </th>
-                                                    <th scope="col">Application No. </th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Type of Applicant</th>
-                                                    <th scope="col">Type of Quarters</th>
-                                                    <th scope="col">Date of Application Submitted</th>
-                                                    <th scope="col">Action</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($applicants as $applicant)
-                                                    <tr> 
-                                                        
-                                                        <td>{{ $applicant->seniority_no }}</td>
-                                                        <td>{{ $applicant->application_no }}</td>
-                                                        <td>{{ $applicant->applicant_name }}</td>
-                                                        <td>{{ $applicant->applicant_type }}</td>
-                                                        <td>{{ $applicant->type }}</td>
-                                                        <td>{{ $applicant->updated_at }} Hrs</td>
-                                                        <td><button type="button" href="#" class="btn btn-success"
-                                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                              VIEW APPLICATION
-                                                            </button></td>
-                                                            
-                                                            {{-- <td><button type="button" href="{{ URL::route('unitHead-askWilling',)}}" class="btn btn-success" >
-                                                                ASK WILLING
-                                                            </button></td> --}}
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+                <button type="button" class="close" data-dismiss="alert"> x</button>
             </div>
-        </div>
-    </section>
+        @endif
+    </div>
 
 
 
-
-    <!-- table end -->
-    <!-- modal  -->
-
-    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">ALLOTEMENT OF QUARTERS</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body fw-bold ">
-
-                    <!-- table content  -->
-
-                    <section class="vh-100" style="background-color: rgb(124, 174, 231)">
-                        <div class="container h-100">
-                            <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col-lg-12 col-xl-11">
-                                    <div class="card text-black" style="border-radius: 25px;">
-                                        <div class="card-body p-md-5">
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-
-                                                    <form class="mx-1 mx-md-4">
-
-                                                        <div class="d-flex flex-row align-items-center mb-4">
-                                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                                            <div class="form-outline flex-fill mb-0">
-                                                                <input type="text" id="form3Example1c"
-                                                                    class="form-control" />
-                                                                <label class="form-label" for="form3Example1c"> NAME</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex flex-row align-items-center mb-4">
-                                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                            <div class="form-outline flex-fill mb-0">
-                                                                <input type="text" id="form3Example3c"
-                                                                    class="form-control" />
-                                                                <label class="form-label" for="form3Example3c">PEN</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-row align-items-center mb-4">
-                                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                            <div class="form-outline flex-fill mb-0">
-                                                                <input type="text" id="form3Example3c"
-                                                                    class="form-control" />
-                                                                <label class="form-label" for="form3Example3c">UNIT</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-row align-items-center mb-4">
-                                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                            <div class="form-outline flex-fill mb-0">
-                                                                <input type="text" id="form3Example3c"
-                                                                    class="form-control" />
-                                                                <label class="form-label" for="form3Example3c">QUARTERS
-                                                                    NAME</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-row align-items-center mb-4">
-                                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                            <div class="form-outline flex-fill mb-0">
-                                                                <input type="text" id="form3Example3c"
-                                                                    class="form-control" />
-                                                                <label class="form-label" for="form3Example3c">QUARTERS
-                                                                    NUMBER</label>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-lg">send</button>
-                                                        </div>
-
-                                                    </form>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- end TABLE -->
-                    <!-- <br><button type="button" class="btn btn-success">CONFIRM</button>
-          <button type="button" class="btn btn-danger">REJECT</button> -->
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Understood</button> -->
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-12 table-responsive">
+            <table class="table table-bordered datatable" id="newtab">
+                <thead>
+                    <tr>
+                        <th>Seniority No. </th>
+                        <th>Application No. </th>
+                        <th>Name</th>
+                        <th>Type of Applicant</th>
+                        <th>Type of Quarters</th>
+                        <th>Date of Application Submitted</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#newtab').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('unitHead-view_seniorityLists') }}",
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "category": "ajax",
+                        "applicant_type": "{{ $typeOfApplicant }}",
+                        "class":"{{$class}}"
+                    }
+                },
+
+                // ajax: "{{ route('unitHead-view_seniorityLists') }}",
+                columns: [{
+                        data: 'seniority_no',
+                        name: 'seniority_no'
+                    },
+                    {
+                        data: 'application_no',
+                        name: 'application_no'
+                    },
+                    {
+                        data: 'applicant_name',
+                        name: 'applicant_name'
+                    },
+                    {
+                        data: 'applicant_type',
+                        name: 'applicant_type'
+                    },
+                    {
+                        data: 'class',
+                        name: 'class'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+
+            });
+        });
+    </script>
 @endsection

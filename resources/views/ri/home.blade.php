@@ -1,118 +1,261 @@
-@extends("layouts.ri-dashboard")
-
-@section("content")
-<!-- <br>
-<br>
-<main id="main" class="main"> 
-<div class="row">
-  <div class="col-md-4">
-    <a class="datcard my-3" href="#">
-      <span style="color:white;" class="h4">Live updates</span>
-      <p>Click here to go .</p>
-      <div class="go-corner">
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4">
-    <a class="datcard my-3" href="#">
-      <span style="color:white;" class="h4">Quarters status</span>
-      <p>View and download reports.</p>
-      <div class="go-corner">
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4">
-    <a class="datcard my-3" href="#">
-      <span style="color:white;" class="h4">Rules and regulations</span>
-      <p>Rules.</p>
-      <div class="go-corner">
-      </div>
-    </a>
-  </div>
-</div>
- -->
-
-
-
-
-
-<!-- <section class="vh-50 gradient-custom">
-</section> -->
-<br>
-
-
-
-
-
-
-<!-- <main id="main" class="main"> 
-<div class="centerflipcards clearfix">
-
-  <div class="col-md-12">
-    <div class="card-flip">
-      <div class='frontCard invCard'>
-        <div class="card-container">
-          <i class="fa fa-tachometer"></i>
-          <h2 class="textshadow">Live updates</h2>
-          <h3 class="textshadow">####.</h3>
+@extends('layouts.ri-dashboard')
+@section('content')
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+            <button type="button" class="close" data-dismiss="alert"> x</button>
         </div>
-      </div>
+    @endif
 
-      <div class='backCard invCard2'>
-        <div class="card-container2">
-          <a class="boxshadow flip-button" href="/newandusedcars.aspx?clearall=1">click here</a>
+    <div id="root">
+        <div class="container pt-5">
+            <div class="row align-items-stretch">
+                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                    <div class="wrap border p-3">
+                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title border p-2">
+                            New Applications
+                        </h4><span class="hind-font caption-12 c-dashboardInfo__count"> {{ count($applicants) }} </span>
+                        @if (count($applicants))
+                            <a href="{{ route('ri-application_requests') }}"> <button class="btn btn-primary mb-3"> View
+                                    Applications</button> </a>
+                        @else
+                            <p class="text-bg-success p-2"> No applications found!</p>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                    <div class="wrap border p-3">
+                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title border p-2">
+                            New Allottees
+                        </h4><span class="hind-font caption-12 c-dashboardInfo__count"> {{ count($allottees) }} </span>
+                        @if (count($allottees))
+                            <a href="{{ route('ri-new_allottees') }}"> <button class="btn btn-primary mb-3">
+                                    View allottee </button> </a>
+                        @else
+                            <p class="text-bg-success p-2"> No allottees found! </p>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                    <div class="wrap border p-3">
+                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title border p-2">
+                            Vacate Requests </h4>
+                        <span class="hind-font caption-12 c-dashboardInfo__count"> {{ count($vacattees) }}
+                        </span>
+                        @if (count($vacattees))
+                            <a href="{{ route('ri-listVacateRequests') }}"> <button class="btn btn-primary mb-3"> Take
+                                    Action </button> </a>
+                        @else
+                            <p class="text-bg-success p-2"> No requests found! </p>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                    <div class="wrap border p-3">
+                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title border p-2">
+                            Compassionate applicants
+                        </h4><span class="hind-font caption-12 c-dashboardInfo__count"> {{ count($compassionate) }} </span>
+                        @if (count($compassionate))
+                            <a href=""> <button
+                                    class="btn btn-primary mb-3">
+                                    Process Request </button> </a>
+                        @else
+                            <p class="text-bg-success p-2"> No Applicants! </p>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+
+        <!--------------------------------  INFORMATION STATS card ----------------------------------------->
+        <div class="grey-bg container-fluid">
+            <section id="minimal-statistics">
+                <div class="row">
+                    <div class="col-12 m-5 mb-1">
+                        <h4 class="text-uppercase align-centre"> Statistics</h4>
+                    </div>
+                </div>
+
+                <div class="grey-bg container-fluid">
+                    <section id="minimal-statistics">
+                        <div class="row">
+
+                            <div class="col-xl-3 col-sm-4 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center">
+                                                    <i class="icon-pencil primary font-large-2 float-left"></i>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <h3>{{ count($seniorityCount) }}</h3>
+                                                    <span>Total Applicants enlisted in Seniority List</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-4 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center">
+                                                    <i class="icon-speech warning font-large-2 float-left"></i>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <h3> {{ count($LsqAllottees) }} </h3>
+                                                    <span>Total lower Subordinate Applicants</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-4 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center">
+                                                    <i class="icon-graph success font-large-2 float-left"></i>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <h3>{{ count($UsqAllottees) }}</h3>
+                                                    <span> Total Upper Subordinate Applicants </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!----------------------- row 2   ----------------------->
+
+                            <div class="grey-bg container-fluid">
+                                <section id="minimal-statistics">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-sm-4 col-12">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <div class="media d-flex">
+                                                            <div class="align-self-center">
+                                                                <i class="icon-pencil primary font-large-2 float-left"></i>
+                                                            </div>
+                                                            <div class="media-body text-right">
+                                                                <h3>{{ $allotteesCount['totalAllottees'] }}</h3>
+                                                                <span> No. of Applicants allocated Quarters </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-sm-4 col-12">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <div class="media d-flex">
+                                                            <div class="align-self-center">
+                                                                <i class="icon-speech warning font-large-2 float-left"></i>
+                                                            </div>
+                                                            <div class="media-body text-right">
+                                                                <h3>{{ $allotteesCount['lsAllottees'] }}</h3>
+                                                                <span> Total lower Subordinate Allottees </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-sm-4 col-12">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <div class="media d-flex">
+                                                            <div class="align-self-center">
+                                                                <i class="icon-graph success font-large-2 float-left"></i>
+                                                            </div>
+                                                            <div class="media-body text-right">
+                                                                <h3>{{ $allotteesCount['usAllottees'] }}</h3>
+                                                                <span>Total Upper Subordinate Allottees</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grey-bg container-fluid">
+                                            <section id="minimal-statistics">
+                                                <div class="row">
+                                                    <div class="col-xl-3 col-sm-4 col-12">
+                                                        <div class="card">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="media d-flex">
+                                                                        <div class="align-self-center">
+                                                                            <i
+                                                                                class="icon-pencil primary font-large-2 float-left"></i>
+                                                                        </div>
+                                                                        <div class="media-body text-right">
+                                                                            <h3>{{ $quartersCount['totalq'] }}</h3>
+                                                                            <span>Total Quarters</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3 col-sm-4 col-12">
+                                                        <div class="card">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="media d-flex">
+                                                                        <div class="align-self-center">
+                                                                            <i
+                                                                                class="icon-speech warning font-large-2 float-left"></i>
+                                                                        </div>
+                                                                        <div class="media-body text-right">
+                                                                            <h3> {{ $quartersCount['lsq'] }} </h3>
+                                                                            <span>Total Lower Subordinate Quarters</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-3 col-sm-4 col-12">
+                                                        <div class="card">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="media d-flex">
+                                                                        <div class="align-self-center">
+                                                                            <i
+                                                                                class="icon-graph success font-large-2 float-left"></i>
+                                                                        </div>
+                                                                        <div class="media-body text-right">
+                                                                            <h3>{{ $quartersCount['usq'] }}</h3>
+                                                                            <span>Total Upper Subordinate Quarters</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
     </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="card-flip">
-      <div class='frontCard applyCard'>
-        <div class="card-container">
-          <i class="fa fa-check"></i>
-          <h2 class="textshadow">Live updates</h2>
-          <h3 class="textshadow">####</h3>
-        </div>
-      </div>
-
-      <div class='backCard applyCard2'>
-        <div class="card-container2">
-          <a class="boxshadow flip-button" href="[SSLDomain]/creditapp.aspx">click here</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="card-flip">
-      <div class='frontCard directionsCard'>
-        <div class="card-container">
-          <i class="fa fa-map-marker"></i>
-          <h2 class="textshadow">updates</h2>
-          <h3 class="textshadow">##############.</h3>
-        </div>
-      </div>
-
-      <div class='backCard directionsCard2'>
-        <div class="card-container2">
-          <a class="boxshadow flip-button" href="#">Click here</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-</main>End #main -->
-
-
-
-<link href="assets/css/usercard.css" rel="stylesheet">
-
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
-
+    <!--------------------------------  INFORMATION STATS card style ends ----------------------------------------->
 @endsection

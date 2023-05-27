@@ -32,6 +32,8 @@ return new class extends Migration
 
             $table->integer('executive_us_allotted_count')->default(0);
             $table->integer('ministerial_us_allotted_count')->default(0);
+
+            $table->integer('special_reservations')->default(0);
             
             $table->timestamps();
         });

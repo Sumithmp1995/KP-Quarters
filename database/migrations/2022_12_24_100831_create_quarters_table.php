@@ -16,16 +16,21 @@ return new class extends Migration
         Schema::create('quarters', function (Blueprint $table) {
             $table->id();
             $table->integer('unitHead_id');
-            $table->string('class');
-            $table->string('type');
             $table->string('quarters_name');
             $table->string('quarters_no');
+            $table->string('class');
+            $table->string('type');
+            $table->string('tc_no');
+            $table->string('kseb_no');
+            $table->string('kwa_no');
             $table->string('unit_name');
             $table->string('allottee_id')->nullable();
-            $table->string('status')->default(0)->nullable();
+            $table->string('status')->nullable();
+            $table->string('action')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

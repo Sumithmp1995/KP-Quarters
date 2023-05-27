@@ -21,10 +21,12 @@ return new class extends Migration
             $table->string('application_no');
             $table->string('unitHead_id');
             $table->string('quarters_id');
+            $table->string('applicant_id');
 
             $table->string('proceedings_no')->nullable();
             $table->string('proceedings_doc')->nullable();
-            $table->string('occupant_status')->default('1')->nullable();    // for Vacated
+            $table->boolean('occupant_status')->default(1)->nullable();    // for Vacated
+
             $table->timestamps();
         });
     }

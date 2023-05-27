@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('user_id')->nullable();
             $table->string('unitHead_id')->nullable();
             $table->string('applicant_name');
-            $table->string('applicant_type');
             $table->string('application_no');
             $table->string('applicant_id');
-            $table->string('type')->nullable();
+            $table->boolean('reservation')->default(null)->nullable();
+            $table->string('applicant_type');
+            $table->string('class')->nullable();
             $table->string('willingness')->nullable();
             $table->string('quarters_id')->nullable();
             $table->integer('seniority_no')->default(0)->nullable();

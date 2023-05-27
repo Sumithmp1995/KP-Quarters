@@ -20,12 +20,17 @@ return new class extends Migration
             $table->string('unitHead_id');
             $table->string('quarters_id');
             $table->string('occupant_id');
+            $table->string('applicant_id');
+            $table->string('allottee_id');
 
-            $table->string('reason');
-            $table->string('other_reason');
+            $table->string('reason')->nullable();
+            $table->string('other_reason')->nullable();
 
             $table->string('kseb_noDues');
             $table->string('kwa_noDues');
+            $table->string('occupant_declaration');
+            $table->boolean('ri_confirmation')->default(0)->nullable();    
+            $table->boolean('unitHead_confirmation')->default(0)->nullable();    
          
             $table->timestamps();
         });

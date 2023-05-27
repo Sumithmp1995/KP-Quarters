@@ -43,22 +43,22 @@ class DatabaseSeeder extends Seeder
       // User seed
 
       \App\Models\User::factory()->create([
-         'name' => 'ARAVIND K',
-         'pen' => '900843',
-         'password' => '$2y$10$hHXBtAKWEOl.h712EYdXrOs1l.S9Z6n0qwj7QeUl.yRTx64JNTrK2',
-         'mother_unit' => 'CITY POLICE OFFICE, KOLLAM',
-         'role' => '1',
-         'applied' => '0'
+         'name' => 'Admin',
+         'pen' => '123456',
+         'password' => '$2y$10$1aXjt85D7ULFpau5x2897OsrMCLYglxxEgkExLL2n5x6RfEMCnAhO',
+         'mother_unit' => 'SPECIAL ARMED POLICE, THIRUVANANTHAPURAM',
+         'role' => '4',
+         'applied' => '1'
       ]);
 
-      \App\Models\User::factory()->create([
-         'name' => 'MANEESH',
-         'pen' => '506532',
-         'password' => '$2y$10$hHXBtAKWEOl.h712EYdXrOs1l.S9Z6n0qwj7QeUl.yRTx64JNTrK2',
-         'mother_unit' => 'CITY POLICE OFFICE, KOLLAM',
-         'role' => '2',
-         'applied' => '0'
-      ]);
+      // \App\Models\User::factory()->create([
+      //    'name' => 'MANEESH',
+      //    'pen' => '506532',
+      //    'password' => '$2y$10$hHXBtAKWEOl.h712EYdXrOs1l.S9Z6n0qwj7QeUl.yRTx64JNTrK2',
+      //    'mother_unit' => 'CITY POLICE OFFICE, KOLLAM',
+      //    'role' => '2',
+      //    'applied' => '0'
+      // ]);
      
     
 

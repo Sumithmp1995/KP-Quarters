@@ -1,3 +1,5 @@
+
+
 <aside id="sidebar" class="sidebar">
 <br>
 <ul class="sidebar-nav" id="sidebar-nav">
@@ -7,45 +9,37 @@
       <span>Home</span>
     </a>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link " href="{{ route('ri-addProfile') }}">
+      <i class="bi bi-building"></i>
+      <span> Profile </span>
+    </a>
+  </li>
+
+
 <li class="nav-item">
     <a class="nav-link " href="{{ route('ri-addQuarters') }}">
-      <i class="bi bi-pencil-square"></i>
+      <i class="bi bi-building"></i>
       <span>+Add Quarters</span>
     </a>
   </li>
+
   <li class="nav-item">
-    <a class="nav-link " href="{{ route('ri-viewQuarters') }}">
-      <i class="bi bi-pen"></i>
+    <a class="nav-link " href="{{ route('ri-viewAllQuarters') }}">
+      <i class="bi bi-search"></i>
       <span>View Quarters</span>
     </a>
-  </li><li class="nav-item">
-    <a class="nav-link " href="#">
-      <i class="bi bi-printer"></i>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link " href="{{ route('ri-selectSeniorityListType') }}">  
+      <i class="bi bi-clipboard-check"></i>
       <span>Seniority list</span>
     </a>
-  </li><li class="nav-item">
-    <a class="nav-link " href="#">
-      <i class="bi bi-clipboard-check"></i>
-      <span>View occupants</span>
-    </a>
-  </li><!--<li class="nav-item">
-    <a class="nav-link " href="/selfvacate">
-      <i class="bi bi-box-arrow-left"></i>
-      <span>Quarters status</span>
-    </a>
-  </li> -->
-  <li class="nav-item">
-    <a class="nav-link " href="/userquartersstatus">
-      <i class="bi bi-sticky"></i>
-      <span>Quarters status</span>
-    </a>
   </li>
-  <!-- <li class="nav-item">
-    <a class="nav-link " href="#">
-      <i class="bi bi-chat-right-text"></i>
-      <span>Notifications</span>
-    </a>
-  </li> -->
+  
+
   <li class="nav-item">
     <a class="nav-link " href="{{ route('signout') }}">
       <i class="bi bi-box-arrow-right"></i>

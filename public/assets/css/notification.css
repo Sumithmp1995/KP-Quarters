@@ -15,7 +15,7 @@
 .dropdown-header
 {
     display:block;
-    background-color: rgb(188, 190, 192);
+    background-color: rgb(255, 255, 255);
     font-size: 2rem;
     text-align: center;
 }
@@ -112,3 +112,16 @@
       opacity:0;
     }
   }
+
+
+  /*  Action centre card design */
+
+  .card-body1 {
+    padding: 20px 25px 10px 50px;
+
+    background-color:rgb(25, 13, 70);
+
+
+    
+  }
+  
