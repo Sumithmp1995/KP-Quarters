@@ -29,7 +29,7 @@
             <div class="inputBox">
                 <input type="text" name="pen" required onkeyup="this.setAttribute('value', this.value);"
                     value="">
-                <label>Your PEN</label>
+                <label>Your PENd</label>
             </div>
 
             <div class="inputBox">
